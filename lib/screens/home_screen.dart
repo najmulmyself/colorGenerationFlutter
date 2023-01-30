@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,10 +10,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var generatedColor = Random().nextInt(Colors.primaries.length);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: ),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          generatedColor = Random().nextInt(Colors.primaries.length);
+        });
+      },
+      child: Scaffold(
+        backgroundColor: Colors.primaries[generatedColor],
+        body: SafeArea(
+            child: Center(
+          child: Text("Hey There"),
+        )),
+      ),
     );
   }
 }
